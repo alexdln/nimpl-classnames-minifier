@@ -7,15 +7,17 @@ Visit https://nimpl.dev/docs/classnames-minifier to view the full documentation.
 ## Installation
 
 **Using npm:**
+
 ```bash
 npm i @nimpl/classnames-minifier
 ```
 
 **Using yarn:**
+
 ```bash
 yarn add @nimpl/classnames-minifier
 ```
 
 ## License
 
-[MIT](https://github.com/vordgi/nimpl-classnames-minifier/blob/main/LICENSE)
+[MIT](https://github.com/alexdln/nimpl-classnames-minifier/blob/main/LICENSE)
