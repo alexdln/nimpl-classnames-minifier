@@ -12,10 +12,25 @@ Visit https://nimpl.dev/docs/classnames-minifier to view the full documentation.
 npm i @nimpl/classnames-minifier
 ```
 
-**Using yarn:**
+## Usage
+
+```ts
+import { type NextConfig } from "next";
+import classNamesMinifier from "@nimpl/classnames-minifier";
+
+const withClassNamesMinifier = classNamesMinifier({
+  /* plugin options here */
+});
+
+const nextConfig: NextConfig = withClassNamesMinifier({
+  /* next options here */
+});
+
+export default nextConfig;
+```
 
 ```bash
-yarn add @nimpl/classnames-minifier
+npm run build --webpack
 ```
 
 ## License
