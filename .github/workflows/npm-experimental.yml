@@ -24,13 +24,9 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
 
-      - name: Install dependencies and build
+      - name: Install dependencies
         run: |
           pnpm install
-          pnpm run build
-          cp ../README.md .
-          cp ../LICENSE .
-        working-directory: ./package
 
       - name: Compute experimental version
         id: version
@@ -38,9 +34,40 @@ jobs:
           HASH=$(git rev-parse --short HEAD)
           echo "version=0.0.0-experimental-${HASH}" >> $GITHUB_OUTPUT
 
-      - name: Publish experimental package
+      - name: Build and publish classnames-minifier
+        run: |
+          cd packages/classnames-minifier
+          pnpm run build
+          cp ../../LICENSE .
+          [ ! -f README.md ] && cp ../../README.md .
+          npm set //registry.npmjs.org/:_authToken=${{secrets.NPM_TOKEN}}
+          npm version --no-git-tag-version ${{ steps.version.outputs.version }}
+          npm publish --tag experimental --access public
+
+      - name: Install latest classnames-minifier in other packages
+        run: |
+          VERSION=${{ steps.version.outputs.version }}
+          for package in packages/*/; do
+            if [ "$(basename "$package")" != "classnames-minifier" ]; then
+              echo "Installing classnames-minifier@$VERSION in $package"
+              cd "$package"
+              pnpm add classnames-minifier@$VERSION
+              cd - > /dev/null
+            fi
+          done
+
+      - name: Build and publish other packages
         run: |
           npm set //registry.npmjs.org/:_authToken=${{secrets.NPM_TOKEN}}
-          npm version --no-git-tag-version ${{steps.version.outputs.version}}
-          npm publish --tag experimental --access public
-        working-directory: ./package
+          for package in packages/*/; do
+            if [ "$(basename "$package")" != "classnames-minifier" ]; then
+              echo "Building and publishing package: $package"
+              cd "$package"
+              pnpm run build
+              cp ../../LICENSE .
+              [ ! -f README.md ] && cp ../../README.md .
+              npm version --no-git-tag-version ${{ steps.version.outputs.version }}
+              npm publish --tag experimental --access public
+              cd - > /dev/null
+            fi
+          done
