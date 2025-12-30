@@ -11,9 +11,29 @@ export type PluginOptions = Omit<Config, "cacheDir" | "distDir" | "checkDistFres
 
 let classnamesMinifier: ClassnamesMinifier;
 
+const isTurbopackEnabled = (nextConfig: any): boolean => {
+    if (nextConfig?.experimental?.turbo || nextConfig?.turbopack) {
+        return true;
+    }
+
+    if (process.env.NEXT_PRIVATE_TURBO === "1" || process.env.TURBOPACK != null || process.argv.includes("--turbo")) {
+        return true;
+    }
+
+    return false;
+};
+
 const withClassnameMinifier = (pluginOptions: PluginOptions = {}) => {
     return (nextConfig: any = {}) => {
         if (pluginOptions.disabled) return nextConfig;
+
+        const turbopackEnabled = isTurbopackEnabled(nextConfig);
+        if (turbopackEnabled) {
+            console.warn(
+                "classnames-minifier is disabled in turbopack mode. Please run the process with `--webpack` flag",
+            );
+            return nextConfig;
+        }
 
         if (!classnamesMinifier) {
             const distDir = nextConfig?.distDir || ".next";
