@@ -4,10 +4,12 @@
   "description": "",
   "scripts": {
     "nimpl:classnames-minifier": "pnpm --filter @nimpl/classnames-minifier",
-    "lint": "eslint \"package/\"",
+    "lint": "eslint \"./\"",
     "eslint": "eslint",
-    "prettier": "prettier",
     "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": ["eslint"]
   },
   "repository": {
     "type": "git",
