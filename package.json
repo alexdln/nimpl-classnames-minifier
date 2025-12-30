@@ -4,10 +4,12 @@
   "description": "",
   "scripts": {
     "nimpl:classnames-minifier": "pnpm --filter @nimpl/classnames-minifier",
-    "lint": "eslint \"package/\"",
+    "lint": "eslint \"./\"",
     "eslint": "eslint",
-    "prettier": "prettier",
     "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": ["eslint"]
   },
   "repository": {
     "type": "git",
@@ -27,5 +29,8 @@
     "typescript-eslint": "8.51.0"
   },
   "license": "MIT",
+  "resolutions": {
+    "@nimpl/classnames-minifier>classnames-minifier": "workspace:*"
+  },
   "packageManager": "pnpm@10.8.0+sha512.0e82714d1b5b43c74610193cb20734897c1d00de89d0e18420aebc5977fa13d780a9cb05734624e81ebd81cc876cd464794850641c48b9544326b5622ca29971"
 }

@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Configuration } from "webpack";
-import type { Config } from "classnames-minifier/dist/lib/types/plugin";
+import type { Config } from "classnames-minifier";
 import ClassnamesMinifier from "classnames-minifier";
 import path from "path";
 import fs from "fs";
 
 import injectConfig from "./lib/injectConfig";
 
-type PluginOptions = Omit<Config, "cacheDir" | "distDir" | "checkDistFreshness"> & { disabled?: boolean };
+export type PluginOptions = Omit<Config, "cacheDir" | "distDir" | "checkDistFreshness"> & { disabled?: boolean };
 
 let classnamesMinifier: ClassnamesMinifier;
 

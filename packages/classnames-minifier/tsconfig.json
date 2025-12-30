@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es2019",
+    "module": "commonjs",
+    "jsx": "react",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "outDir": "dist/cjs",
+    "rootDir": "src",
+    "declaration": true,
+    "declarationDir": "dist/cjs"
+  },
+  "include": ["src/**/*"]
+}

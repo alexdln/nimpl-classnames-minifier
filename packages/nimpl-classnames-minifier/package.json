@@ -1,0 +1,61 @@
+{
+  "name": "@nimpl/classnames-minifier",
+  "version": "4.0.1",
+  "description": "Library for configuring style modules to generate compressed classes",
+  "main": "dist/cjs/withClassnamesMinifier.js",
+  "module": "dist/esm/withClassnamesMinifier.mjs",
+  "types": "dist/cjs/withClassnamesMinifier.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "pnpm run build:cjs && pnpm run build:esm",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/cjs/withClassnamesMinifier.d.ts",
+      "import": "./dist/esm/withClassnamesMinifier.mjs",
+      "require": "./dist/cjs/withClassnamesMinifier.js",
+      "default": "./dist/esm/withClassnamesMinifier.mjs"
+    }
+  },
+  "keywords": [
+    "next",
+    "next.js",
+    "classname",
+    "class",
+    "minify",
+    "compress",
+    "cut",
+    "css",
+    "sass",
+    "scss",
+    "modules"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/alexdln/nimpl-classnames-minifier.git"
+  },
+  "author": {
+    "name": "Alex Savelyev",
+    "email": "dev@alexdln.com",
+    "url": "https://github.com/alexdln/"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "25.0.3",
+    "@types/uuid": "11.0.0",
+    "@types/webpack": "5.28.5",
+    "css-loader": "7.1.2",
+    "typescript": "5.9.3"
+  },
+  "peerDependencies": {
+    "css-loader": ">=4.0.0"
+  },
+  "dependencies": {
+    "classnames-minifier": "1.0.0",
+    "uuid": "13.0.0"
+  }
+}

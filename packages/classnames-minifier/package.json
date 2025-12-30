@@ -1,18 +1,30 @@
 {
-  "name": "@nimpl/classnames-minifier",
-  "version": "4.0.1",
+  "name": "classnames-minifier",
+  "version": "1.0.0",
   "description": "Library for configuring style modules to generate compressed classes",
-  "main": "dist/withClassnamesMinifier.js",
-  "types": "dist/withClassnamesMinifier.d.ts",
+  "main": "dist/cjs/ClassnamesMinifier.js",
+  "module": "dist/esm/ClassnamesMinifier.mjs",
+  "types": "dist/cjs/ClassnamesMinifier.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsc"
+    "build": "pnpm run build:cjs && pnpm run build:esm",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "lint": "eslint .",
+    "eslint": "eslint",
+    "prepare": "husky"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/cjs/ClassnamesMinifier.d.ts",
+      "import": "./dist/esm/ClassnamesMinifier.mjs",
+      "require": "./dist/cjs/ClassnamesMinifier.js",
+      "default": "./dist/esm/ClassnamesMinifier.mjs"
+    }
   },
   "keywords": [
-    "next",
-    "next.js",
     "classname",
     "class",
     "minify",
@@ -44,7 +56,6 @@
     "css-loader": ">=4.0.0"
   },
   "dependencies": {
-    "classnames-minifier": "1.0.0",
     "uuid": "13.0.0"
   }
 }
