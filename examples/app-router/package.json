@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@nimpl/classnames-minifier": "link:..\\..\\package",
+    "@nimpl/classnames-minifier": "link:..\\..\\packages\\nimpl-classnames-minifier",
     "next": "16.1.1",
     "react": "19.2.3",
     "react-dom": "19.2.3"
