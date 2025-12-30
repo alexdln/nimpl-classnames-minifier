@@ -1,0 +1,46 @@
+name: Publish experimental package
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  publish-experimental:
+    runs-on: ubuntu-latest
+
+    if: |
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      ${{ github.head_ref != 'main' && !startsWith(github.head_ref, 'canary') }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Install dependencies and build
+        run: |
+          pnpm install
+          pnpm run build
+          cp ../README.md .
+          cp ../LICENSE .
+        working-directory: ./package
+
+      - name: Compute experimental version
+        id: version
+        run: |
+          HASH=$(git rev-parse --short HEAD)
+          echo "version=0.0.0-experimental-${HASH}" >> $GITHUB_OUTPUT
+
+      - name: Publish experimental package
+        run: |
+          npm set //registry.npmjs.org/:_authToken=${{secrets.NPM_TOKEN}}
+          npm version --no-git-tag-version ${{steps.version.outputs.version}}
+          npm publish --tag experimental --access public
+        working-directory: ./package
