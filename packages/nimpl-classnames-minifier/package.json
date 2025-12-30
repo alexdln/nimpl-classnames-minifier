@@ -2,13 +2,24 @@
   "name": "@nimpl/classnames-minifier",
   "version": "4.0.1",
   "description": "Library for configuring style modules to generate compressed classes",
-  "main": "dist/withClassnamesMinifier.js",
-  "types": "dist/withClassnamesMinifier.d.ts",
+  "main": "dist/cjs/withClassnamesMinifier.js",
+  "module": "dist/esm/withClassnamesMinifier.mjs",
+  "types": "dist/cjs/withClassnamesMinifier.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsc"
+    "build": "pnpm run build:cjs && pnpm run build:esm",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/cjs/withClassnamesMinifier.d.ts",
+      "import": "./dist/esm/withClassnamesMinifier.mjs",
+      "require": "./dist/cjs/withClassnamesMinifier.js",
+      "default": "./dist/esm/withClassnamesMinifier.mjs"
+    }
   },
   "keywords": [
     "next",

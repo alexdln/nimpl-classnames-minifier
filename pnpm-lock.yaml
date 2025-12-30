@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  '@nimpl/classnames-minifier>classnames-minifier': workspace:*
+
 importers:
 
   .:
@@ -80,8 +83,8 @@ importers:
   packages/nimpl-classnames-minifier:
     dependencies:
       classnames-minifier:
-        specifier: 1.0.0
-        version: 1.0.0(css-loader@7.1.2(webpack@5.104.1))
+        specifier: workspace:*
+        version: link:../classnames-minifier
       uuid:
         specifier: 13.0.0
         version: 13.0.0
@@ -589,11 +592,6 @@ packages:
   chrome-trace-event@1.0.4:
     resolution: {integrity: sha512-rNjApaLzuwaOTjCiT8lSDdGN1APCiqkChLMJxJPWLunPAt5fy8xgU9/jNOchV84wfIxrA0lRQB7oCT8jrn/wrQ==}
     engines: {node: '>=6.0'}
-
-  classnames-minifier@1.0.0:
-    resolution: {integrity: sha512-f+oH54ka5SGsY2PB30/ztd74xhPC395anKTszSrKouZx3YQd+EEtfmFIOtOsdhmKkN9vCiuAvTEV78kdUUkVww==}
-    peerDependencies:
-      css-loader: '>=4.0.0'
 
   client-only@0.0.1:
     resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}
@@ -1185,10 +1183,6 @@ packages:
     resolution: {integrity: sha512-XQegIaBTVUjSHliKqcnFqYypAd4S+WCYt5NIeRs6w/UAry7z8Y9j5ZwRRL4kzq9U3sD6v+85er9FvkEaBpji2w==}
     hasBin: true
 
-  uuid@9.0.1:
-    resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
-    hasBin: true
-
   watchpack@2.5.0:
     resolution: {integrity: sha512-e6vZvY6xboSwLz2GD36c16+O/2Z6fKvIf4pOXptw2rY9MVwE/TXc6RGqxD3I3x0a28lwBY7DE+76uTPSsBrrCA==}
     engines: {node: '>=10.13.0'}
@@ -1716,11 +1710,6 @@ snapshots:
       supports-color: 7.2.0
 
   chrome-trace-event@1.0.4: {}
-
-  classnames-minifier@1.0.0(css-loader@7.1.2(webpack@5.104.1)):
-    dependencies:
-      css-loader: 7.1.2(webpack@5.104.1)
-      uuid: 9.0.1
 
   client-only@0.0.1: {}
 
@@ -2260,8 +2249,6 @@ snapshots:
   util-deprecate@1.0.2: {}
 
   uuid@13.0.0: {}
-
-  uuid@9.0.1: {}
 
   watchpack@2.5.0:
     dependencies:

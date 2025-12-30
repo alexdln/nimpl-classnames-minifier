@@ -22,12 +22,6 @@
       "import": "./dist/esm/ClassnamesMinifier.mjs",
       "require": "./dist/cjs/ClassnamesMinifier.js",
       "default": "./dist/esm/ClassnamesMinifier.mjs"
-    },
-    "./types": {
-      "types": "./dist/cjs/lib/types/plugin.d.ts",
-      "import": "./dist/esm/lib/types/plugin.d.ts",
-      "require": "./dist/cjs/lib/types/plugin.d.ts",
-      "default": "./dist/esm/lib/types/plugin.d.ts"
     }
   },
   "keywords": [

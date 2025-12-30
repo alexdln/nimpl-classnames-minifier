@@ -10,6 +10,8 @@ import ConverterMinified from "./lib/ConverterMinified";
 import validateDist from "./lib/validateDist";
 import removeDist from "./lib/removeDist";
 
+export * from "./lib/types/plugin";
+
 class ClassnamesMinifier {
     converterMinified: ConverterMinified;
 
