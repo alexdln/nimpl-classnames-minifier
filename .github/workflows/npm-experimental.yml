@@ -44,6 +44,9 @@ jobs:
           npm version --no-git-tag-version ${{ steps.version.outputs.version }}
           npm publish --tag experimental --access public
 
+      - name: Wait for npm registry propagation
+        run: sleep 3
+
       - name: Install latest classnames-minifier in other packages
         run: |
           VERSION=${{ steps.version.outputs.version }}

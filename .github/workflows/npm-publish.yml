@@ -38,6 +38,9 @@ jobs:
             npm publish --access public
           fi
 
+      - name: Wait for npm registry propagation
+        run: sleep 3
+
       - name: Install latest classnames-minifier in other packages
         run: |
           for package in packages/*/; do
