@@ -77,7 +77,7 @@ importers:
         specifier: 5.9.3
         version: 5.9.3
 
-  packages/nimpl-classnames-minimier:
+  packages/nimpl-classnames-minifier:
     dependencies:
       classnames-minifier:
         specifier: 1.0.0

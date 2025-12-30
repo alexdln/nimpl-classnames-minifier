@@ -2,8 +2,9 @@
   "name": "classnames-minifier",
   "version": "1.0.0",
   "description": "Library for configuring style modules to generate compressed classes",
-  "main": "./dist/ClassnamesMinifier.js",
-  "types": "./dist/ClassnamesMinifier.d.ts",
+  "main": "dist/cjs/ClassnamesMinifier.js",
+  "module": "dist/esm/ClassnamesMinifier.mjs",
+  "types": "dist/cjs/ClassnamesMinifier.d.ts",
   "files": [
     "dist"
   ],
@@ -17,12 +18,16 @@
   },
   "exports": {
     ".": {
-      "default": "./dist/cjs/withClassnamesMinifier.js",
-      "import": "./dist/esm/withClassnamesMinifier.js"
+      "types": "./dist/cjs/ClassnamesMinifier.d.ts",
+      "import": "./dist/esm/ClassnamesMinifier.mjs",
+      "require": "./dist/cjs/ClassnamesMinifier.js",
+      "default": "./dist/esm/ClassnamesMinifier.mjs"
     },
     "./types": {
-      "default": "./dist/cjs/lib/types/plugin.d.ts",
-      "import": "./dist/esm/lib/types/plugin.d.ts"
+      "types": "./dist/cjs/lib/types/plugin.d.ts",
+      "import": "./dist/esm/lib/types/plugin.d.ts",
+      "require": "./dist/cjs/lib/types/plugin.d.ts",
+      "default": "./dist/esm/lib/types/plugin.d.ts"
     }
   },
   "keywords": [
