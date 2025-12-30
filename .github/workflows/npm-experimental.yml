@@ -45,7 +45,7 @@ jobs:
           npm publish --tag experimental --access public
 
       - name: Wait for npm registry propagation
-        run: sleep 3
+        run: sleep 20
 
       - name: Install latest classnames-minifier in other packages
         run: |
