@@ -9,7 +9,9 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx}": ["eslint"]
+    "*.{ts,tsx,js,jsx}": [
+      "eslint"
+    ]
   },
   "repository": {
     "type": "git",
@@ -23,10 +25,10 @@
   "devDependencies": {
     "eslint": "9.39.2",
     "eslint-config-prettier": "10.1.8",
-    "eslint-plugin-prettier": "5.5.4",
+    "eslint-plugin-prettier": "5.5.5",
     "husky": "9.1.7",
-    "prettier": "3.7.4",
-    "typescript-eslint": "8.51.0"
+    "prettier": "3.8.1",
+    "typescript-eslint": "8.54.0"
   },
   "license": "MIT",
   "resolutions": {
